@@ -48,10 +48,12 @@
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
 - Must not implement automatic sending of messages without explicit user approval
-- Must maintain human supervision and review as central to all flows
-- Must ensure security, privacy, and compliance in data handling
+- Must act only as support assistant, never autonomously
 - Must incorporate incremental learning based on user feedback
-- Must provide transparent integration with existing ecosystems (e.g., Microsoft 365, Outlook)
+- Must evolve continuously without loss of history
+- Must provide a clear, objective, and non-intrusive interface
+- Must enforce security and privacy by default (no external data sharing without explicit consent)
+- Must align with the approved stack (Python 3.11, Flask/Typer, local vector DB, SQLite/SQLCipher, pytest)
 
 ## Project Structure
 
@@ -220,4 +222,4 @@ directories captured above]
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v1.0.0 - See `/memory/constitution.md`*
+*Based on Constitution v2.4.0 - See `/memory/constitution.md`*
