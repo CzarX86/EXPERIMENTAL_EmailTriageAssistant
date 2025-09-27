@@ -1,0 +1,195 @@
+openapi: 3.0.3
+info:
+  title: Email Assistant Local API
+  version: 0.1.0
+  description: Local loopback-only API for ingestion, classification, suggestions, search, explainability, and export/import.
+servers:
+  - url: http://127.0.0.1:8765
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200': { description: OK }
+  /ingest:
+    post:
+      summary: Start ingestion from a source
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                source:
+                  type: string
+                  enum: [m365, imap, mbox]
+                options:
+                  type: object
+              required: [source]
+      responses:
+        '202': { description: Ingestion started }
+  /index:
+    post:
+      summary: Build or update semantic index
+      responses:
+        '202': { description: Indexing started }
+  /classify/{email_id}:
+    post:
+      summary: Classify a specific email
+      parameters:
+        - in: path
+          name: email_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Classification result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Classification'
+  /suggest/{email_id}:
+    post:
+      summary: Generate a suggestion for an email
+      parameters:
+        - in: path
+          name: email_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Suggestion
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Suggestion'
+  /explain/{email_id}:
+    get:
+      summary: Get explanation for a classification/suggestion
+      parameters:
+        - in: path
+          name: email_id
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Explanation details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Explanation'
+  /search:
+    get:
+      summary: Semantic search
+      parameters:
+        - in: query
+          name: q
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SearchResult'
+  /feedback:
+    post:
+      summary: Submit user feedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackInput'
+      responses:
+        '200': { description: Accepted }
+  /export:
+    post:
+      summary: Export encrypted local bundle
+      responses:
+        '200':
+          description: Bundle location
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  path: { type: string }
+  /import:
+    post:
+      summary: Import encrypted local bundle
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                path: { type: string }
+              required: [path]
+      responses:
+        '202': { description: Import started }
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    Classification:
+      type: object
+      properties:
+        email_id: { type: string }
+        label: { type: string, enum: [spam, urgent, acao, responder, ignorar] }
+        confidence: { type: number, format: float }
+        created_at: { type: string, format: date-time }
+    Suggestion:
+      type: object
+      properties:
+        email_id: { type: string }
+        text: { type: string }
+        created_at: { type: string, format: date-time }
+    Explanation:
+      type: object
+      properties:
+        email_id: { type: string }
+        label: { type: string }
+        confidence: { type: number }
+        key_factors:
+          type: object
+          properties:
+            keywords: { type: array, items: { type: string } }
+            vip: { type: boolean }
+            time_window: { type: string, nullable: true }
+            thread_activity: { type: string, nullable: true }
+            mentions: { type: array, items: { type: string } }
+        similar_emails:
+          type: array
+          items:
+            type: object
+            properties:
+              email_id: { type: string }
+              score: { type: number }
+        feedback_influence:
+          type: array
+          items:
+            type: object
+            properties:
+              feedback_id: { type: string }
+              weight: { type: number }
+    SearchResult:
+      type: object
+      properties:
+        email_id: { type: string }
+        score: { type: number }
+    FeedbackInput:
+      type: object
+      properties:
+        email_id: { type: string }
+        type: { type: string, enum: [approve, reject, correct] }
+        corrected_text: { type: string, nullable: true }
