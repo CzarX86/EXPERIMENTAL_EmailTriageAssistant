@@ -47,7 +47,11 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- Must not implement automatic sending of messages without explicit user approval
+- Must maintain human supervision and review as central to all flows
+- Must ensure security, privacy, and compliance in data handling
+- Must incorporate incremental learning based on user feedback
+- Must provide transparent integration with existing ecosystems (e.g., Microsoft 365, Outlook)
 
 ## Project Structure
 
@@ -216,4 +220,4 @@ directories captured above]
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v1.0.0 - See `/memory/constitution.md`*

@@ -1,50 +1,47 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report
+Version change: 0.0.0 → 1.0.0
+List of modified principles: All principles added (5 new)
+Added sections: Escopo, Fora de Escopo
+Removed sections: None
+Templates requiring updates: None (templates are generic and align with general principles)
+Follow-up TODOs: None
+-->
+
+# Assistente Inteligente de E-mails com Revisão Supervisionada Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Não Envio Automático de Mensagens
+Não enviar mensagens automáticas sem aprovação explícita. Todas as ações de envio devem ser revisadas e aprovadas pelo usuário para garantir controle humano.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Supervisão Humana Central
+Manter a supervisão e revisão humana como parte central do fluxo. O assistente deve sempre priorizar a intervenção do usuário em decisões críticas.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Segurança, Privacidade e Conformidade
+Garantir segurança, privacidade e conformidade no tratamento dos dados. Todos os dados de e-mail devem ser processados de forma segura, com criptografia e compliance com regulamentações como GDPR.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Aprendizado Incremental
+Aprendizado incremental e adaptativo com base no feedback do usuário. O sistema deve evoluir continuamente através do feedback explícito do usuário.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Integração Transparente
+Integração transparente com ecossistemas existentes (Microsoft 365 via Graph API, Outlook/Mail local). O assistente deve se integrar sem perturbar os fluxos existentes.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## Escopo
+- Processar e-mails recebidos, detectando spam e classificando prioridades (urgente, ação, responder, ignorar).
+- Sugerir respostas com base em contexto e histórico.
+- Aprender com feedback do usuário e refinar modelos.
+- Manter base de conhecimento vetorial (conteúdo e anexos).
+- Realizar OCR, versionamento e vetorização de anexos.
+- Suportar busca semântica contextual.
+- Utilizar histórico e threads para inferir urgência.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Fora de Escopo
+- Enviar mensagens em lote sem supervisão.
+- Atuar de forma autônoma sem revisão do usuário.
+- Substituir completamente o julgamento humano.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+A constituição é o documento supremo do projeto. Emendas requerem aprovação unânime dos desenvolvedores principais e documentação completa das mudanças. Versões seguem semântica: MAJOR para mudanças incompatíveis nos princípios, MINOR para adições de princípios ou seções, PATCH para clarificações ou correções. Todas as mudanças no código devem verificar conformidade com os princípios através de revisões manuais e testes.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-09-27 | **Last Amended**: 2025-09-27
