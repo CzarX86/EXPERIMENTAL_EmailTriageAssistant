@@ -96,6 +96,7 @@ Como usuário que recebe muitos e-mails, quero que o assistente organize, classi
    - Modelos: indefinidos (sem purge automático)
    - Derivados de anexos (texto/OCR temporário): 90 dias (auto purge)
    - Usuário pode sobrescrever durações e acionar purge/exportação manual
+- FR-015: Painel de revisão (opcional): o MVP é CLI-first; um painel local opcional pode ser fornecido para visualizar, revisar e aprovar correções/sugestões. O painel deve operar somente em loopback, respeitar FR-011/FR-012, nunca realizar envio automático e não é obrigatório para atender às funcionalidades de correção via CLI.
 - FR-016: Suporte multilíngue (pt, en, es) com autodetecção por mensagem; classificação e busca semântica operam nos idiomas suportados; sugestões geradas no idioma preferido do usuário, com opção de sobrescrever por e-mail; fallback: para idiomas fora do escopo, aplicar o idioma mais próximo suportado e sinalizar ao usuário.
 - FR-017: Sem sincronização automática; disponibilizar exportação/importação manual de um pacote local contendo índices, estados de modelo, configurações e metadados; o pacote deve ser criptografado e a importação requer confirmação explícita; conflitos resolvidos por escolha do usuário (substituir/mesclar); nenhum dado é enviado sem consentimento.
 - FR-018: Auditabilidade e explicabilidade: para cada classificação/sugestão, exibir (a) rótulo e confiança; (b) fatores‑chave que contribuíram (palavras‑chave/VIP, janelas de tempo/SLA, atividade de thread/menções); (c) top‑N e‑mails semelhantes usados como referência; (d) quais feedbacks do usuário mais influenciaram o resultado. Todos os dados e explicações permanecem locais; permitir copiar/exportar a explicação para auditoria local.
@@ -144,8 +145,7 @@ Ambiguidades a confirmar:
 - [x] All mandatory sections completed
 
 ### Requirement Completeness
-- [ ] No [NEEDS CLARIFICATION] markers remain
- - [x] No [NEEDS CLARIFICATION] markers remain
+- [x] No [NEEDS CLARIFICATION] markers remain
 - [x] Requirements are testable and unambiguous  
 - [x] Success criteria are measurable
 - [x] Scope is clearly bounded

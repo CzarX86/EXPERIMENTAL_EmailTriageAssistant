@@ -38,12 +38,15 @@ Context for generation: (no additional arguments)
 - [ ] T011 [P] Contract test POST /feedback in `tests/contract/test_feedback.py`
 - [ ] T012 [P] Contract test POST /export in `tests/contract/test_export.py`
 - [ ] T013 [P] Contract test POST /import in `tests/contract/test_import.py`
+ - [ ] T013a [P] Security contract tests: loopback-only enforcement and Bearer token required (401/403 cases) in `tests/contract/test_security.py`
+ - [ ] T010a [P] Security & privacy tests (FR-012): encryption-at-rest (SQLCipher key required), wrong key rejection, and no-secret-logging assertions in `tests/integration/test_security_privacy_storage.py`
 
 ### Integration tests (from User Scenarios in spec)
 - [ ] T014 [P] Integration: ingest→classify→suggest happy-path (Story 1) in `tests/integration/test_flow_ingest_classify_suggest.py`
 - [ ] T015 [P] Integration: OCR on image/PDF used in suggestion context (Story 2) in `tests/integration/test_ocr_pdf_flow.py`
 - [ ] T016 [P] Integration: feedback improves future suggestions (Story 3) in `tests/integration/test_feedback_learning.py`
 - [ ] T017 [P] Integration: semantic search relevance (Story 4) in `tests/integration/test_semantic_search.py`
+ - [ ] T017a [P] Integration: multilingual detection and suggestion language preference override in `tests/integration/test_multilang.py`
 
 ## Phase 3.3: Core Implementation
 ### Models (from `data-model.md`) — different files so can run in parallel
@@ -67,6 +70,7 @@ Context for generation: (no additional arguments)
 - [ ] T033 Core ML services: IndexService + ClassifierService with incremental learning in `src/services/indexing.py` and `src/services/classifier.py`
 - [ ] T034 Suggestions/Explainability/Search services in `src/services/suggestions.py`, `src/services/explain.py`, `src/services/search.py`
 - [ ] T035 Retention/ExportImport/Jobs (retry queue + chunked safe-mode) in `src/services/retention.py`, `src/services/transfer.py`, `src/services/jobs.py`
+ - [ ] T035a Metrics module: collect and persist local metrics (accuracy, urgent precision/recall, suggestion acceptance) in `src/lib/metrics.py` and expose via CLI/API
 
 ### API (Flask) — endpoints must match OpenAPI
 - [ ] T036 Flask app bootstrap + auth middleware (loopback-only + Keychain token) in `src/services/api.py`
@@ -80,16 +84,20 @@ Context for generation: (no additional arguments)
 - [ ] T044 Implement POST /feedback in `src/services/api.py`
 - [ ] T045 Implement POST /export in `src/services/api.py`
 - [ ] T046 Implement POST /import in `src/services/api.py`
+ - [ ] T046a Ensure API security behaviors: loopback-only host check, Bearer token auth; add negative-path handling (401/403) with no secret logging
 
 ## Phase 3.4: Integration
 - [ ] T047 Wire services to storage/index; enable JSON logging across app; configure MSAL/IMAP client adapters in `src/lib/` and inject into services
 - [ ] T048 Implement FR-019 failure handling (retry queue, backoff, safe mode, needs_attention flagging) across OCR/parsing and ingestion flows
+ - [ ] T048a Tests for FR-019: backoff schedule, retry limits by size/type, safe-mode chunking on large files, and needs_attention flagging in `tests/integration/test_failures_retry_safe_mode.py`
 
 ## Phase 3.5: Polish
 - [ ] T049 [P] Unit tests: urgency rule (FR-010), retention policy (FR-014), explainability content (FR-018) in `tests/unit/test_rules.py`
 - [ ] T050 [P] Performance smoke: initial indexing on sample corpus (<5 min) in `tests/integration/test_perf_smoke.py`
 - [ ] T051 [P] Docs: refine `quickstart.md` with concrete commands and add API notes referencing `contracts/openapi.yaml`
 - [ ] T052 Final QA: run Quickstart end-to-end locally; checklist and fixups in `docs/manual-testing.md` (create file)
+ - [ ] T053 [P] CLI corrections (FR-008): approve/reject/correct flows with unit and integration tests in `tests/unit/test_cli_corrections.py` and `tests/integration/test_cli_corrections_flow.py`; implement commands in `src/cli/corrections.py`
+ - [ ] T054 [P] Metrics/reporting (FR-013): CLI `report` command to display local metrics; tests in `tests/unit/test_metrics.py` and `tests/integration/test_metrics_report.py`; implement in `src/cli/report.py`
 
 ---
 
