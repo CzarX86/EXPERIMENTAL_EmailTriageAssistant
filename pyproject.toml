@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "experimental-email-triage-assistant"
+version = "0.1.0"
+description = "Local-first email triage assistant: ingest, classify, suggest with supervised review"
+authors = ["CzarX86 <dev@example.com>"]
+readme = "README.md"
+packages = [
+  { include = "src" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Flask = "^3.0.0"
+typer = { version = "^0.12.3", extras = ["all"] }
+faiss-cpu = "^1.8.0"
+sentence-transformers = "^2.7.0"
+scikit-learn = "^1.5.0"
+joblib = "^1.4.2"
+pytesseract = "^0.3.10"
+pypdf = "^4.2.0"
+python-docx = "^1.1.0"
+unstructured = "^0.14.6"
+msal = "^1.30.0"
+msgraph-core = "^1.0.0"
+imapclient = "^2.3.1"
+pysqlcipher3 = "^1.2.0"
+python-dotenv = "^1.0.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.2"
+pytest-cov = "^5.0.0"
+coverage = "^7.6.1"
+ruff = "^0.6.8"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv", "venv", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+pythonpath = ["src"]

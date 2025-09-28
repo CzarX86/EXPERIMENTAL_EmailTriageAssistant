@@ -51,6 +51,7 @@
 - Q: Sincronização entre dispositivos? → A: A (Sem sincronização automática). Apenas exportação/importação manual de bundle local.
 - Q: Auditoria e explicabilidade? → A: C (Exibir fatores‑chave, e‑mails similares e quais feedbacks do usuário influenciaram; incluir confiança).
 - Q: Comportamento em falhas de parsing/OCR? → A: D (Igual a C com fila de retries em background e backoff exponencial, limites por tamanho/tipo e logs detalhados, mais modo seguro para arquivos muito grandes com processamento em chunks; maior complexidade).
+- Q: Quais métricas de sucesso/qualidade (alvos mensuráveis) para classificação e sugestões? → A: C+D (Precisão urgente ≥90%; Recall urgente ≥80%; Acurácia geral ≥75% (conjunto local); Taxa de aceitação de sugestões ≥40%; além disso, melhoria relativa ≥10% mês‑a‑mês em acurácia e aceitação).
 
 ---
 
@@ -113,6 +114,25 @@ Ambiguidades a confirmar:
 - Estado do Modelo: versões/parâmetros, data de atualização, métricas locais
 
 ---
+
+## Non-Functional Quality Attributes
+
+### Quality Metrics (MVP Targets)
+- Urgente: Precisão (precision) ≥ 90%
+- Urgente: Recall ≥ 80%
+- Acurácia geral de classificação ≥ 75% em conjunto de avaliação local
+- Taxa de aceitação de sugestões ≥ 40%
+- Melhoria contínua: ≥ 10% de melhoria relativa mês‑a‑mês em acurácia e aceitação (quando aplicável)
+
+### Performance and Reliability
+- Processamento inicial pode ser mais longo; operações em background com retries (FR‑019); não bloquear UX.
+- Pipeline resiliente para anexos grandes via modo seguro (chunks/streaming).
+
+### Security & Privacy
+- Privacy‑by‑default; dados e métricas permanecem locais; nenhuma telemetria externa sem consentimento.
+
+### Observability
+- Logging estruturado em JSON; registrar métricas locais de qualidade (acurácia, precisão/recall urgente, aceitação) para acompanhamento do progresso.
 
 ## Review & Acceptance Checklist
 *GATE: Automated checks run during main() execution*
