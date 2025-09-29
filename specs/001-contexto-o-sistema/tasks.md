@@ -1,4 +1,4 @@
-# Tasks: Assistente de E-mails com Classificação e Sugestões Supervisionadas
+# Tasks: Assistente de E-mails com Classificação e S- [x] T018: Implementar modelo `Email` com campos básicos, metadados e relacionamentos- [x] T019: Implementar modelo `Attachment` com suporte OCR e validação- [x] T020: Implementar modelo `Thread` para agrupamento de conversas- [x] T021: Implementar modelo `Classification` com labels e scores- [x] T022: Implementar modelo `Suggestion` para respostas automáticas- [x] T023: Implementar modelo `Feedback` para aprendizado incremental- [x] T024: Implementar modelo `Explanation` para transparência das decisões- [x] T025: Implementar modelo `SemanticIndexEntry` para busca vetorial- [x] T026: Implementar modelo `ModelState` para versionamento de ML- [x] T027: Implementar modelo `RetentionPolicy` para gestão de dados- [x] T028: Implementar modelo `ProcessingJob` para processamento assíncronopervisionadas
 
 **Input**: Design docs from `/specs/001-contexto-o-sistema/`  
 Feature dir: `/Users/juliocezar/Dev/work/EXPERIMENTAL_EmailTriageAssistant/specs/001-contexto-o-sistema`  
@@ -50,17 +50,17 @@ Context for generation: (no additional arguments)
 
 ## Phase 3.3: Core Implementation
 ### Models (from `data-model.md`) — different files so can run in parallel
-- [ ] T018 [P] Email model in `src/models/email.py`
-- [ ] T019 [P] Attachment model in `src/models/attachment.py`
-- [ ] T020 [P] Thread model in `src/models/thread.py`
-- [ ] T021 [P] Classification model in `src/models/classification.py`
-- [ ] T022 [P] Suggestion model in `src/models/suggestion.py`
-- [ ] T023 [P] Feedback model in `src/models/feedback.py`
-- [ ] T024 [P] Explanation model in `src/models/explanation.py`
-- [ ] T025 [P] SemanticIndexEntry model in `src/models/semantic_index.py`
-- [ ] T026 [P] ModelState model in `src/models/model_state.py`
-- [ ] T027 [P] RetentionPolicy model in `src/models/retention_policy.py`
-- [ ] T028 [P] ProcessingJob model in `src/models/processing_job.py`
+- [x] T018 [P] Email model in `src/models/email.py`
+- [x] T019 [P] Attachment model in `src/models/attachment.py`
+- [x] T020 [P] Thread model in `src/models/thread.py`
+- [x] T021 [P] Classification model in `src/models/classification.py`
+- [x] T022 [P] Suggestion model in `src/models/suggestion.py`
+- [x] T023 [P] Feedback model in `src/models/feedback.py`
+- [x] T024 [P] Explanation model in `src/models/explanation.py`
+- [x] T025 [P] SemanticIndexEntry model in `src/models/semantic_index.py`
+- [x] T026 [P] ModelState model in `src/models/model_state.py`
+- [x] T027 [P] RetentionPolicy model in `src/models/retention_policy.py`
+- [x] T028 [P] ProcessingJob model in `src/models/processing_job.py`
 
 ### Core services and utilities (grouped to stay focused)
 - [ ] T029 Storage layer: SQLite + SQLCipher connection helper and migrations stub in `src/lib/storage.py` (and `src/lib/migrations.py`)
