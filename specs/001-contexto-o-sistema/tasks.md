@@ -28,25 +28,25 @@ Context for generation: (no additional arguments)
 
 ## Phase 3.2: Tests First (TDD) — MUST FAIL BEFORE IMPLEMENTATION
 ### Contract tests (from OpenAPI in `contracts/openapi.yaml`)
-- [ ] T004 [P] Contract test GET /health in `tests/contract/test_health.py`
-- [ ] T005 [P] Contract test POST /ingest in `tests/contract/test_ingest.py`
-- [ ] T006 [P] Contract test POST /index in `tests/contract/test_index.py`
-- [ ] T007 [P] Contract test POST /classify/{email_id} in `tests/contract/test_classify.py`
-- [ ] T008 [P] Contract test POST /suggest/{email_id} in `tests/contract/test_suggest.py`
-- [ ] T009 [P] Contract test GET /explain/{email_id} in `tests/contract/test_explain.py`
-- [ ] T010 [P] Contract test GET /search in `tests/contract/test_search.py`
-- [ ] T011 [P] Contract test POST /feedback in `tests/contract/test_feedback.py`
-- [ ] T012 [P] Contract test POST /export in `tests/contract/test_export.py`
-- [ ] T013 [P] Contract test POST /import in `tests/contract/test_import.py`
- - [ ] T013a [P] Security contract tests: loopback-only enforcement and Bearer token required (401/403 cases) in `tests/contract/test_security.py`
+- [x] T004 [P] Contract test GET /health in `tests/contract/test_health.py`
+- [x] T005 [P] Contract test POST /ingest in `tests/contract/test_ingest.py`
+- [x] T006 [P] Contract test POST /index in `tests/contract/test_index.py`
+- [x] T007 [P] Contract test POST /classify/{email_id} in `tests/contract/test_classify.py`
+- [x] T008 [P] Contract test POST /suggest/{email_id} in `tests/contract/test_suggest.py`
+- [x] T009 [P] Contract test GET /explain/{email_id} in `tests/contract/test_explain.py`
+- [x] T010 [P] Contract test GET /search in `tests/contract/test_search.py`
+- [x] T011 [P] Contract test POST /feedback in `tests/contract/test_feedback.py`
+- [x] T012 [P] Contract test POST /export in `tests/contract/test_export.py`
+- [x] T013 [P] Contract test POST /import in `tests/contract/test_import.py`
+ - [x] T013a [P] Security contract tests: loopback-only enforcement and Bearer token required (401/403 cases) in `tests/contract/test_security.py`
  - [ ] T010a [P] Security & privacy tests (FR-012): encryption-at-rest (SQLCipher key required), wrong key rejection, and no-secret-logging assertions in `tests/integration/test_security_privacy_storage.py`
 
 ### Integration tests (from User Scenarios in spec)
-- [ ] T014 [P] Integration: ingest→classify→suggest happy-path (Story 1) in `tests/integration/test_flow_ingest_classify_suggest.py`
-- [ ] T015 [P] Integration: OCR on image/PDF used in suggestion context (Story 2) in `tests/integration/test_ocr_pdf_flow.py`
-- [ ] T016 [P] Integration: feedback improves future suggestions (Story 3) in `tests/integration/test_feedback_learning.py`
-- [ ] T017 [P] Integration: semantic search relevance (Story 4) in `tests/integration/test_semantic_search.py`
- - [ ] T017a [P] Integration: multilingual detection and suggestion language preference override in `tests/integration/test_multilang.py`
+- [x] T014 [P] Integration: ingest→classify→suggest happy-path (Story 1) in `tests/integration/test_flow_ingest_classify_suggest.py`
+- [x] T015 [P] Integration: OCR on image/PDF used in suggestion context (Story 2) in `tests/integration/test_ocr_pdf_flow.py`
+- [x] T016 [P] Integration: feedback improves future suggestions (Story 3) in `tests/integration/test_feedback_learning.py`
+- [x] T017 [P] Integration: semantic search relevance (Story 4) in `tests/integration/test_semantic_search.py`
+ - [x] T017a [P] Integration: multilingual detection and suggestion language preference override in `tests/integration/test_multilang.py`
 
 ## Phase 3.3: Core Implementation
 ### Models (from `data-model.md`) — different files so can run in parallel
@@ -138,9 +138,9 @@ Task: "T028 ProcessingJob model in src/models/processing_job.py"
 ```
 
 ## Validation Checklist
-- [ ] All contract endpoints have tests (T004–T013)
-- [ ] All user stories have integration tests (T014–T017)
+- [x] All contract endpoints have tests (T004–T013)
+- [x] All user stories have integration tests (T014–T017)
 - [ ] All entities have model tasks (T018–T028)
-- [ ] Tests come before implementation (T004–T017 before T018+)
-- [ ] [P] tasks touch different files only
-- [ ] Each task has an exact file path
+- [x] Tests come before implementation (T004–T017 before T018+)
+- [x] [P] tasks touch different files only
+- [x] Each task has an exact file path
